@@ -1,0 +1,7 @@
+RewriteEngine On
+RewriteBase /
+AddDefaultCharset UTF-8
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ /public/index.php?path=$1 [NC,L,QSA]
+php_value date.timezone 'Europe/Kiev'
