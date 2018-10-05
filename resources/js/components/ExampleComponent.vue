@@ -198,9 +198,7 @@
     },
     methods: {
       addVisitors() {
-        if (!this.$refs.visitorForm.validate()) {
-          return;
-        }
+
         window.axios.post('http://test/visitors', {data: this.assembleCustomers()})
           .then((res) => {
             console.log(res)
@@ -235,6 +233,8 @@
             name: this.model.name,
             phone: this.phone,
           })));
+        this.model = {};
+        this.phone = '';
       },
       deleteCustomer(index) {
         this.customers.splice(index, 1);

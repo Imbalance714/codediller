@@ -69373,9 +69373,6 @@ Vue.filter('phone', function (phone) {
     addVisitors: function addVisitors() {
       var _this3 = this;
 
-      if (!this.$refs.visitorForm.validate()) {
-        return;
-      }
       window.axios.post('http://test/visitors', { data: this.assembleCustomers() }).then(function (res) {
         console.log(res);
         if (res.data.success) {
@@ -69407,6 +69404,8 @@ Vue.filter('phone', function (phone) {
         name: this.model.name,
         phone: this.phone
       })));
+      this.model = {};
+      this.phone = '';
     },
     deleteCustomer: function deleteCustomer(index) {
       this.customers.splice(index, 1);
